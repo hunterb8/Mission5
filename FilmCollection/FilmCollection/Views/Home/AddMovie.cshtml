@@ -1,0 +1,59 @@
+﻿@{
+    ViewData["Title"] = "Add Movie";
+}
+
+@model FilmCollection.Models.NewMovie
+
+<div class="text-center">
+    <h1 class="display-4">Add Movie</h1><br />
+    
+    <form method="post">
+        <label asp-for="category_id">Category: </label>
+        <select asp-for="category_id" name="category" required>
+            <option value="">Select</option>
+            @foreach (Category c in ViewBag.Categories)
+            {
+                <option value="@c.category_id">@c.category_name</option>
+            }
+        </select><br />
+
+        <label asp-for="title">Title: </label>
+        <input asp-for="title" required /><br />
+
+        <label asp-for="year">Year: </label>
+        <input asp-for="year" type="number" min="1700" max="2100" required /><br />
+
+        <label asp-for="director">Director: </label>
+        <input asp-for="director" required /><br />
+
+        <label asp-for="rating">Rating: </label>
+        <select asp-for="rating" name="rating" required>
+            <option value="">Select</option>
+            <option value="g">G</option>
+            <option value="pg">PG</option>
+            <option value="pg13">PG-13</option>
+            <option value="r">R</option>
+            <option value="ur">UR</option>
+            <option value="nr">NR</option>
+            <option value="tvy7">TV-Y7</option>
+            <option value="tvpg">TV-PG</option>
+            <option value="tv14">TV-14</option>
+        </select><br />
+
+        <label asp-for="edited">Edited: </label>
+        <select asp-for="edited" name="rating">
+            <option value="">Select</option>
+            <option value="y">Yes</option>
+            <option value="n">No</option>
+        </select><br />
+
+        <label asp-for="lent_to">Lent To: </label>
+        <input asp-for="lent_to" /><br />
+
+        <label asp-for="notes">Notes: </label>
+        <input asp-for="notes" maxlength="25" /><br /><br />
+
+        <button type="submit">Submit</button>
+
+    </form>
+</div>
